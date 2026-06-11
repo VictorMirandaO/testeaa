@@ -1036,7 +1036,85 @@ fun HomeScreen(
                             }
                         }
                     }
+
+                    // --- SEÇÃO EXCLUSIVA: NOSSAS MÚSICAS PARA MARIA CLARA ---
+                    item(key = "nossas_musicas_title") {
+                        NavigationTitle(
+                            title = "Nossas Músicas 💖",
+                            modifier = Modifier.animateItem()
+                        )
+                    }
+
+                    item(key = "nossas_musicas_list") {
+                        val playlistMariaClara = remember {
+                            listOf(
+                                MediaMetadata(
+                                    id = "dQw4w9WgXcQ", // EDITE: Cole o ID do YouTube da música 1
+                                    title = "Nome da Música 1",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Artista 1")),
+                                    duration = 210,
+                                    thumbnailUrl = "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "dQw4w9WgXcQ", // EDITE: Cole o ID do YouTube da música 2
+                                    title = "Nome da Música 2",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Artista 2")),
+                                    duration = 180,
+                                    thumbnailUrl = "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "dQw4w9WgXcQ", // EDITE: Cole o ID do YouTube da música 3
+                                    title = "Nome da Música 3",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Artista 3")),
+                                    duration = 240,
+                                    thumbnailUrl = "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                )
+                            )
+                        }
+
+                        LazyRow(
+                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            modifier = Modifier.fillMaxWidth().animateItem()
+                        ) {
+                            items(playlistMariaClara) { songMetadata ->
+                                Column(
+                                    modifier = Modifier
+                                        .width(120.dp)
+                                        .clickable {
+                                            playerConnection.playQueue(
+                                                YouTubeQueue.radio(songMetadata),
+                                            )
+                                        },
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    AsyncImage(
+                                        model = songMetadata.thumbnailUrl,
+                                        contentDescription = null,
+                                        modifier = Modifier
+                                            .size(100.dp)
+                                            .clip(RoundedCornerShape(16.dp)),
+                                        contentScale = ContentScale.Crop
+                                    )
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(
+                                        text = songMetadata.title,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        maxLines = 1,
+                                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                                    )
+                                    Text(
+                                        text = songMetadata.artists.firstOrNull()?.name.orEmpty(),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        maxLines = 1,
+                                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
+
 
                 homeSections.forEach { section ->
                     when (section) {

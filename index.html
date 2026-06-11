@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Maria Clara, com todo o meu amor 🌸</title>
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#E8A7B6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- Google Fonts: Caveat & Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. VARIÁVEIS & RESET
+           ========================================================================== */
+        :root {
+            --color-bg-light: #FFF5F7;
+            --color-bg-mid1: #FCDDE6;
+            --color-bg-mid2: #F4B8C8;
+            --color-rose-gold: #E8A7B6;
+            --color-warm-gold: #D4956A;
+            --color-text-main: #4A3538;
+            --color-text-muted: #8B6B6E;
+            --color-white: #ffffff;
+            --color-hk-pink: #FFB7CC;
+            --color-hk-dark-pink: #FF8FAB;
+            
+            --font-fancy: 'Caveat', cursive;
+            --font-ui: 'Lato', sans-serif;
+            
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            font-weight: 300;
+            color: var(--color-text-main);
+            background: linear-gradient(180deg, 
+                var(--color-bg-light) 0%, 
+                var(--color-bg-mid1) 25%, 
+                var(--color-bg-mid2) 50%, 
+                var(--color-rose-gold) 75%, 
+                var(--color-warm-gold) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Acessibilidade: Reduzir animações se o usuário preferir */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* ==========================================================================
+           2. SPLASH SCREEN (O Céu de Corona)
+           ========================================================================== */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                #1a0a2e 0%, 
+                #2d1045 35%, 
+                #6b2d5e 65%, 
+                #c46b7a 85%, 
+                var(--color-bg-mid2) 100%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: var(--color-white);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        #splash.fade-out {
+            opacity: 0;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
+
+        /* Estrelas da Splash */
+        .star {
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: twinkle 3s infinite ease-in-out;
+            will-change: opacity, transform;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Lanternas Flutuantes */
+        .lantern-container {
+            position: absolute;
+            bottom: -100px;
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        /* Lanterna Principal */
+        .lantern-main {
+            width: 65px;
+            height: 90px;
+            filter: drop-shadow(0 0 15px rgba(254, 219, 143, 0.7));
+            animation: floatUpMain 18s linear infinite;
+        }
+
+        /* Lanternas de Fundo */
+        .lantern-bg {
+            width: 35px;
+            height: 50px;
+            opacity: 0.45;
+            filter: drop-shadow(0 0 8px rgba(254, 219, 143, 0.5));
+        }
+
+        .l-bg-1 { left: 15%; animation: floatUpBg1 25s linear infinite; }
+        .l-bg-2 { left: 40%; animation: floatUpBg2 22s linear infinite; }
+        .l-bg-3 { left: 75%; animation: floatUpBg3 28s linear infinite; }
+        .l-bg-4 { left: 85%; animation: floatUpBg4 20s linear infinite; }
+
+        @keyframes floatUpMain {
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translate3d(20px, -110vh, 0) rotate(8deg); opacity: 0; }
+        }
+
+        @keyframes floatUpBg1 {
+            0% { transform: translate3d(0, 0, 0) rotate(-5deg); opacity: 0; }
+            15% { opacity: 0.5; }
+            100% { transform: translate3d(-40px, -110vh, 0) rotate(5deg); opacity: 0; }
+        }
+
+        @keyframes floatUpBg2 {
+            0% { transform: translate3d(0, 0, 0) rotate(3deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            100% { transform: translate3d(30px, -110vh, 0) rotate(-6deg); opacity: 0; }
+        }
+
+        @keyframes floatUpBg3 {
+            0% { transform: translate3d(0, 0, 0) rotate(-2deg); opacity: 0; }
+            20% { opacity: 0.5; }
+            100% { transform: translate3d(-15px, -110vh, 0) rotate(4deg); opacity: 0; }
+        }
+
+        @keyframes floatUpBg4 {
+            0% { transform: translate3d(0, 0, 0) rotate(5deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            100% { transform: translate3d(25px, -110vh, 0) rotate(-3deg); opacity: 0; }
+        }
+
+        .splash-title {
+            font-family: var(--font-fancy);
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #FEDB8F;
+            text-shadow: 0 0 10px rgba(254, 219, 143, 0.4);
+            z-index: 10;
+        }
+
+        .splash-text {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 300px;
+            opacity: 0.9;
+            z-index: 10;
+        }
+
+        .splash-btn {
+            background: linear-gradient(135deg, #FEDB8F 0%, #D4956A 100%);
+            border: none;
+            color: #4A1A4E;
+            font-family: var(--font-fancy);
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding: 12px 36px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 149, 106, 0.4);
+            z-index: 10;
+            animation: pulseBtn 2s infinite;
+            will-change: transform, opacity;
+        }
+
+        @keyframes pulseBtn {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; box-shadow: 0 6px 20px rgba(254, 219, 143, 0.6); }
+        }
+
+        /* ==========================================================================
+           3. CONTEÚDO PRINCIPAL
+           ========================================================================== */
+        #main {
+            display: none; /* Ativado via JS */
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 24px 16px 120px 16px;
+            position: relative;
+        }
+
+        #main.visible {
+            display: block;
+            animation: fadeInMain 1s ease forwards;
+        }
+
+        @keyframes fadeInMain {
+            from { opacity: 0; transform: translate3d(0, 20px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        /* Animação genérica para scroll */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translate3d(0, 30px, 0);
+            transition: var(--transition-smooth);
+            will-change: opacity, transform;
+        }
+
+        .scroll-reveal.reveal-active {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        /* ==========================================================================
+           4. HERO — CONTADOR DE TEMPO
+           ========================================================================== */
+        .hero {
+            text-align: center;
+            padding: 40px 10px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .corona-sun-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 260px;
+            height: 260px;
+            opacity: 0.18;
+            pointer-events: none;
+            color: var(--color-warm-gold);
+            z-index: 0;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-fancy);
+            font-size: 1.4rem;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: var(--font-fancy);
+            font-size: 2.5rem;
+            color: var(--color-text-main);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Grid do Contador */
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter-row-2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter-card {
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(232, 167, 182, 0.3);
+            border-radius: 14px;
+            padding: 12px 6px;
+            box-shadow: 0 4px 12px rgba(74, 53, 56, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .counter-num {
+            font-family: var(--font-fancy);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--color-warm-gold);
+            line-height: 1.1;
+            margin-bottom: 2px;
+        }
+
+        .counter-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-text-muted);
+            font-weight: 400;
+        }
+
+        /* ==========================================================================
+           5. DIVISORES (Laço Hello Kitty)
+           ========================================================================== */
+        .divisor {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 45px 0;
+            opacity: 0.65;
+            width: 100%;
+        }
+
+        .divisor::before,
+        .divisor::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-rose-gold), transparent);
+        }
+
+        .hk-bow-svg {
+            width: 32px;
+            height: 22px;
+        }
+
+        /* ==========================================================================
+           6. BAÚ DE MEMÓRIAS (3 Cartas)
+           ========================================================================== */
+        .bau-section {
+            width: 100%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-family: var(--font-fancy);
+            font-size: 2.2rem;
+            color: var(--color-text-main);
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .envelopes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .envelope-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--color-white);
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(74, 53, 56, 0.08);
+            border: 1px solid rgba(232, 167, 182, 0.25);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        /* Aba do envelope */
+        .envelope-flap {
+            height: 55px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Diferentes gradientes para cada aba */
+        .flap-1 { background: linear-gradient(135deg, var(--color-rose-gold) 0%, var(--color-warm-gold) 100%); }
+        .flap-2 { background: linear-gradient(135deg, var(--color-hk-pink) 0%, var(--color-rose-gold) 100%); }
+        .flap-3 { background: linear-gradient(135deg, var(--color-warm-gold) 0%, var(--color-rose-gold) 100%); }
+
+        .flap-emoji {
+            font-size: 1.4rem;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        /* Triângulo decorativo simulando a aba aberta/fechada */
+        .envelope-flap::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+            border-top: 8px solid;
+            z-index: 1;
+            transition: transform 0.4s ease, border-top-color 0.4s ease;
+        }
+
+        .flap-1::after { border-top-color: #df9eab; }
+        .flap-2::after { border-top-color: var(--color-rose-gold); }
+        .flap-3::after { border-top-color: #df9eab; }
+
+        .envelope-card.open .envelope-flap::after {
+            transform: translateX(-50%) scaleY(-1);
+            bottom: 0;
+        }
+
+        .envelope-card.open .flap-emoji {
+            transform: rotate(-15deg) scale(1.1);
+        }
+
+        /* Preview / Capa do envelope */
+        .envelope-preview {
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .envelope-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            margin-bottom: 4px;
+        }
+
+        .envelope-title {
+            font-family: var(--font-fancy);
+            font-size: 1.7rem;
+            color: var(--color-text-main);
+            margin-bottom: 6px;
+        }
+
+        .envelope-hint {
+            font-size: 0.75rem;
+            color: var(--color-warm-gold);
+            font-weight: 400;
+        }
+
+        /* Conteúdo da Carta (Escondido por padrão) */
+        .carta-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: max-height;
+        }
+
+        .envelope-card.open .carta-content {
+            max-height: 700px; /* Suficiente para o texto */
+            border-top: 1px dashed rgba(232, 167, 182, 0.3);
+        }
+
+        /* Papel pautado */
+        .carta-paper {
+            background: var(--color-white);
+            background-image: repeating-linear-gradient(
+                var(--color-white) 0px, 
+                var(--color-white) 27px, 
+                rgba(232, 167, 182, 0.15) 27px, 
+                rgba(232, 167, 182, 0.15) 28px
+            );
+            padding: 24px 28px;
+            line-height: 28px;
+        }
+
+        .carta-text {
+            font-family: var(--font-fancy);
+            font-size: 1.25rem;
+            color: #553e41;
+            text-align: justify;
+        }
+
+        .carta-signature {
+            font-family: var(--font-fancy);
+            font-size: 1.35rem;
+            color: var(--color-warm-gold);
+            text-align: right;
+            margin-top: 18px;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           7. GALERIA DE MEMÓRIAS
+           ========================================================================== */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            width: 100%;
+        }
+
+        /* Elemento polaroid */
+        .polaroid-card {
+            background-color: var(--color-white);
+            padding: 10px 10px 24px 10px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(74, 53, 56, 0.06);
+            border: 1px solid rgba(232, 167, 182, 0.18);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Foto destaque ocupa duas colunas */
+        .destaque {
+            grid-column: 1 / -1;
+        }
+
+        .foto-container {
+            width: 100%;
+            background-color: #faf6f7;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .destaque .foto-container {
+            aspect-ratio: 16 / 9;
+        }
+
+        .quadrada .foto-container {
+            aspect-ratio: 1 / 1;
+        }
+
+        .foto-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Placeholder pronto: display none por enquanto */
+        }
+
+        /* Placeholder enquanto fotos não são adicionadas */
+        .foto-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            text-align: center;
+            background: linear-gradient(135deg, #FFF9FA 0%, #FDF1F4 100%);
+        }
+
+        .placeholder-emoji {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .destaque .placeholder-emoji {
+            font-size: 2.2rem;
+        }
+
+        .placeholder-text {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            line-height: 1.3;
+        }
+
+        .polaroid-caption {
+            font-family: var(--font-fancy);
+            font-size: 1.15rem;
+            text-align: center;
+            margin-top: 12px;
+            color: var(--color-text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ==========================================================================
+           8. MINI-PLAYER DE VINIL
+           ========================================================================== */
+        .player-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(232, 167, 182, 0.3);
+            border-radius: 22px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(74, 53, 56, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        /* Disco de Vinil */
+        .vinil-wrapper {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        .vinil-disc {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle, transparent 18%, #111 19%, #111 22%, transparent 23%),
+                repeating-conic-gradient(#222 0deg 15deg, #151515 15deg 30deg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            will-change: transform;
+        }
+
+        /* Capa ou selo do vinil (rosé) */
+        .vinil-disc::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--color-hk-pink) 0%, var(--color-rose-gold) 100%);
+            border-radius: 50%;
+            border: 2px solid #111;
+        }
+
+        /* Furo central */
+        .vinil-hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--color-bg-light);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* Animação do Vinil girando */
+        .vinil-disc.spinning {
+            animation: spinVinil 4s linear infinite;
+        }
+
+        @keyframes spinVinil {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Detalhes da Música */
+        .player-info {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .track-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-artist {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Controles do Player */
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-rose-gold) 0%, var(--color-warm-gold) 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(212, 149, 106, 0.25);
+            color: var(--color-white);
+            transition: transform 0.2s ease;
+        }
+
+        .play-btn:active {
+            transform: scale(0.95);
+        }
+
+        .play-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* ==========================================================================
+           9. BOTÃO DO DENGO — FAB + TOAST
+           ========================================================================== */
+        .dengo-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 20px;
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(135deg, #FFD6E0 0%, var(--color-rose-gold) 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 18px rgba(232, 167, 182, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .dengo-fab:active {
+            transform: scale(0.92);
+        }
+
+        .snoopy-fab-svg {
+            width: 34px;
+            height: 34px;
+        }
+
+        /* Toast Container */
+        .dengo-toast {
+            position: fixed;
+            bottom: 96px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: 0 10px 30px rgba(74, 53, 56, 0.12);
+            border-left: 4px solid var(--color-rose-gold);
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            
+            /* Estado oculto padrão */
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            will-change: opacity, transform;
+        }
+
+        .dengo-toast.show {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            pointer-events: auto;
+        }
+
+        .toast-content {
+            font-family: var(--font-fancy);
+            font-size: 1.25rem;
+            color: var(--color-text-main);
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           10. FOOTER (Snoopy Deitado)
+           ========================================================================== */
+        .footer {
+            text-align: center;
+            padding: 60px 20px 80px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .snoopy-footer-svg {
+            width: 100px;
+            height: 60px;
+            margin: 0 auto 15px auto;
+            display: block;
+        }
+
+        .footer-text {
+            font-family: var(--font-fancy);
+            font-size: 1.4rem;
+            color: var(--color-text-muted);
+        }
+
+        .footer-heart {
+            color: var(--color-rose-gold);
+            display: inline-block;
+            animation: beatHeart 1.5s infinite ease-in-out;
+        }
+
+        @keyframes beatHeart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. SPLASH SCREEN (O Céu de Corona) -->
+    <div id="splash">
+        <!-- Estrelas geradas via JavaScript entrarão aqui -->
+        
+        <!-- Lanternas de Fundo -->
+        <div class="lantern-container l-bg-1">
+            <svg class="lantern-bg" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="30" height="42" rx="4" fill="#FEDB8F" fill-opacity="0.8"/>
+                <ellipse cx="20" cy="26" rx="9" ry="12" fill="#FFA834" fill-opacity="0.9"/>
+                <rect x="3" y="2" width="34" height="4" rx="2" fill="#E89B55"/>
+                <rect x="3" y="46" width="34" height="4" rx="2" fill="#E89B55"/>
+                <path d="M10 50 L10 57 M20 50 L20 59 M30 50 L30 57" stroke="#E89B55" stroke-width="1.5"/>
+            </svg>
+        </div>
+        <div class="lantern-container l-bg-2">
+            <svg class="lantern-bg" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="30" height="42" rx="4" fill="#FEDB8F" fill-opacity="0.8"/>
+                <ellipse cx="20" cy="26" rx="9" ry="12" fill="#FFA834" fill-opacity="0.9"/>
+                <rect x="3" y="2" width="34" height="4" rx="2" fill="#E89B55"/>
+                <rect x="3" y="46" width="34" height="4" rx="2" fill="#E89B55"/>
+                <path d="M10 50 L10 57 M20 50 L20 59 M30 50 L30 57" stroke="#E89B55" stroke-width="1.5"/>
+            </svg>
+        </div>
+        <div class="lantern-container l-bg-3">
+            <svg class="lantern-bg" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="30" height="42" rx="4" fill="#FEDB8F" fill-opacity="0.8"/>
+                <ellipse cx="20" cy="26" rx="9" ry="12" fill="#FFA834" fill-opacity="0.9"/>
+                <rect x="3" y="2" width="34" height="4" rx="2" fill="#E89B55"/>
+                <rect x="3" y="46" width="34" height="4" rx="2" fill="#E89B55"/>
+                <path d="M10 50 L10 57 M20 50 L20 59 M30 50 L30 57" stroke="#E89B55" stroke-width="1.5"/>
+            </svg>
+        </div>
+        <div class="lantern-container l-bg-4">
+            <svg class="lantern-bg" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="30" height="42" rx="4" fill="#FEDB8F" fill-opacity="0.8"/>
+                <ellipse cx="20" cy="26" rx="9" ry="12" fill="#FFA834" fill-opacity="0.9"/>
+                <rect x="3" y="2" width="34" height="4" rx="2" fill="#E89B55"/>
+                <rect x="3" y="46" width="34" height="4" rx="2" fill="#E89B55"/>
+                <path d="M10 50 L10 57 M20 50 L20 59 M30 50 L30 57" stroke="#E89B55" stroke-width="1.5"/>
+            </svg>
+        </div>
+
+        <!-- Lanterna Principal Central -->
+        <div style="margin-bottom: 25px;">
+            <svg class="lantern-main" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="32" height="44" rx="5" fill="#FEDB8F" fill-opacity="0.9"/>
+                <ellipse cx="20" cy="26" rx="10" ry="14" fill="#FFA834" fill-opacity="0.95"/>
+                <!-- Brilho Interno Adicional -->
+                <circle cx="20" cy="26" r="5" fill="#FFF2D4" fill-opacity="0.9"/>
+                <!-- Molduras da lanterna -->
+                <rect x="2" y="1" width="36" height="4" rx="2" fill="#D4956A"/>
+                <rect x="2" y="47" width="36" height="4" rx="2" fill="#D4956A"/>
+                <!-- Franjas suspensas -->
+                <path d="M8 51 L8 58 M14 51 L14 60 M20 51 L20 57 M26 51 L26 60 M32 51 L32 58" stroke="#D4956A" stroke-width="1.5"/>
+            </svg>
+        </div>
+
+        <h1 class="splash-title">Para Maria Clara</h1>
+        <p class="splash-text">Escrevi este presente para te lembrar do quanto nossa história brilha. Toque abaixo para abrir.</p>
+        <button class="splash-btn" id="open-btn">Abrir Presente ✧</button>
+    </div>
+
+    <!-- 2. CONTEÚDO PRINCIPAL (Exibido após toque) -->
+    <div id="main">
+        
+        <!-- HERO — CONTADOR DE TEMPO -->
+        <section class="hero">
+            <!-- Sol de Corona de Fundo -->
+            <svg class="corona-sun-bg" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <!-- Círculo Central -->
+                <circle cx="50" cy="50" r="16"/>
+                <!-- Raios do Sol -->
+                <path d="M50 8 C48 20 46 26 42 32 C38 26 36 20 50 8 Z" />
+                <path d="M50 92 C52 80 54 74 58 68 C62 74 64 80 50 92 Z" />
+                <path d="M8 50 C20 52 26 54 32 58 C26 62 20 64 8 50 Z" />
+                <path d="M92 50 C80 48 74 46 68 42 C74 38 80 36 92 50 Z" />
+                <path d="M20 20 C30 24 35 28 39 34 C33 36 27 38 20 20 Z" />
+                <path d="M80 80 C70 76 65 72 61 66 C67 64 73 62 80 80 Z" />
+                <path d="M20 80 C24 70 28 65 34 61 C36 67 38 73 20 80 Z" />
+                <path d="M80 20 C76 30 72 35 66 39 C64 33 62 27 80 20 Z" />
+                <!-- Raios secundários menores -->
+                <circle cx="50" cy="26" r="2.5"/>
+                <circle cx="50" cy="74" r="2.5"/>
+                <circle cx="26" cy="50" r="2.5"/>
+                <circle cx="74" cy="50" r="2.5"/>
+                <circle cx="33" cy="33" r="2"/>
+                <circle cx="67" cy="67" r="2"/>
+                <circle cx="33" cy="67" r="2"/>
+                <circle cx="67" cy="33" r="2"/>
+            </svg>
+
+            <span class="hero-subtitle">Maria Clara, meu amor...</span>
+            <h2 class="hero-title">Estamos juntos há 🌙</h2>
+
+            <!-- Grid do Contador -->
+            <div class="counter-grid">
+                <div class="counter-card">
+                    <div class="counter-num" id="years">00</div>
+                    <div class="counter-label">Anos</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-num" id="months">00</div>
+                    <div class="counter-label">Meses</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-num" id="days">00</div>
+                    <div class="counter-label">Dias</div>
+                </div>
+            </div>
+            <div class="counter-row-2">
+                <div class="counter-card">
+                    <div class="counter-num" id="hours">00</div>
+                    <div class="counter-label">Horas</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-num" id="minutes">00</div>
+                    <div class="counter-label">Minutos</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-num" id="seconds">00</div>
+                    <div class="counter-label">Segundos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVISOR HELLO KITTY -->
+        <div class="divisor">
+            <svg class="hk-bow-svg" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Laço Esquerdo -->
+                <path d="M16 15 C8 7 1 12 5 21 C8 27 15 20 16 15 Z" fill="#FFB7CC" stroke="#FF8FAB" stroke-width="1.5"/>
+                <circle cx="11" cy="16" r="2" fill="#FF8FAB"/>
+                <!-- Laço Direito -->
+                <path d="M24 15 C32 7 39 12 35 21 C32 27 25 20 24 15 Z" fill="#FFB7CC" stroke="#FF8FAB" stroke-width="1.5"/>
+                <circle cx="29" cy="16" r="2" fill="#FF8FAB"/>
+                <!-- Círculo Central -->
+                <circle cx="20" cy="15" r="5" fill="#FF8FAB"/>
+                <circle cx="20" cy="15" r="3" fill="#FFB7CC"/>
+            </svg>
+        </div>
+
+        <!-- 3. BAÚ DE MEMÓRIAS (3 Cartas) -->
+        <section class="bau-section scroll-reveal" id="cartas-secao">
+            <div class="section-header">
+                <h3 class="section-title">Nosso Baú de Memórias</h3>
+                <p class="section-subtitle">toque em cada envelope para ler 🎀</p>
+            </div>
+
+            <div class="envelopes-container">
+                
+                <!-- CARTA 1 -->
+                <div class="envelope-card" id="card-1">
+                    <div class="envelope-flap flap-1">
+                        <span class="flap-emoji">💌</span>
+                    </div>
+                    <div class="envelope-preview">
+                        <div class="envelope-tag">carta 01</div>
+                        <h4 class="envelope-title">O começo de tudo</h4>
+                        <span class="envelope-hint">toque para ler ↓</span>
+                    </div>
+                    <div class="carta-content">
+                        <div class="carta-paper">
+                            <!-- EDITE: texto da carta 1 -->
+                            <p class="carta-text">
+                                Maria Clara, meu bem, parece que foi ontem que a nossa história começou. Desde aquele dia 16 de abril de 2024, a minha vida ganhou um brilho totalmente diferente, mais leve, doce e cheio de sorrisos. Olhar para trás e ver tudo o que já compartilhamos me faz ter a certeza de que cada detalhe conspirou para estarmos juntos. Você é o meu refúgio e o início da minha melhor fase.
+                            </p>
+                            <div class="carta-signature">Com carinho, seu amor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTA 2 -->
+                <div class="envelope-card" id="card-2">
+                    <div class="envelope-flap flap-2">
+                        <span class="flap-emoji">🌸</span>
+                    </div>
+                    <div class="envelope-preview">
+                        <div class="envelope-tag">carta 02</div>
+                        <h4 class="envelope-title">Por que eu te amo</h4>
+                        <span class="envelope-hint">toque para ler ↓</span>
+                    </div>
+                    <div class="carta-content">
+                        <div class="carta-paper">
+                            <!-- EDITE: texto da carta 2 -->
+                            <p class="carta-text">
+                                Eu te amo pelas pequenas coisas, minha linda: pelo seu sorriso que ilumina o meu dia, pelo seu abraço que me traz paz instantânea e pelo seu jeito único de cuidar de mim. Amo a sua força, o seu carinho e a forma como a gente se entende sem precisar dizer nenhuma palavra. Você é a minha gatinha, minha princesa e a pessoa que eu escolho todos os dias para amar e proteger.
+                            </p>
+                            <div class="carta-signature">De quem te ama muito</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTA 3 -->
+                <div class="envelope-card" id="card-3">
+                    <div class="envelope-flap flap-3">
+                        <span class="flap-emoji">✨</span>
+                    </div>
+                    <div class="envelope-preview">
+                        <div class="envelope-tag">carta 03</div>
+                        <h4 class="envelope-title">Nosso futuro</h4>
+                        <span class="envelope-hint">toque para ler ↓</span>
+                    </div>
+                    <div class="carta-content">
+                        <div class="carta-paper">
+                            <!-- EDITE: texto da carta 3 -->
+                            <p class="carta-text">
+                                Quando fecho os olhos e penso no amanhã, minha mulher, vejo você ao meu lado em todas as conquistas e aventuras. Quero construir uma vida linda com você, cheia de dias calmos, viagens inesquecíveis e risadas infinitas. Nosso amor é como aquelas lanternas flutuantes subindo ao céu: brilhante, livre e infinito. Mal posso esperar pelo nosso futuro juntos.
+                            </p>
+                            <div class="carta-signature">Para sempre seu</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DIVISOR HELLO KITTY -->
+        <div class="divisor">
+            <svg class="hk-bow-svg" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 15 C8 7 1 12 5 21 C8 27 15 20 16 15 Z" fill="#FFB7CC" stroke="#FF8FAB" stroke-width="1.5"/>
+                <circle cx="11" cy="16" r="2" fill="#FF8FAB"/>
+                <path d="M24 15 C32 7 39 12 35 21 C32 27 25 20 24 15 Z" fill="#FFB7CC" stroke="#FF8FAB" stroke-width="1.5"/>
+                <circle cx="29" cy="16" r="2" fill="#FF8FAB"/>
+                <circle cx="20" cy="15" r="5" fill="#FF8FAB"/>
+                <circle cx="20" cy="15" r="3" fill="#FFB7CC"/>
+            </svg>
+        </div>
+
+        <!-- 4. GALERIA DE FOTOS -->
+        <section class="bau-section scroll-reveal" id="galeria-secao">
+            <div class="section-header">
+                <h3 class="section-title">Nossos Momentos</h3>
+                <p class="section-subtitle">memórias reveladas no tempo 📸</p>
+            </div>
+
+            <div class="galeria-grid">
+                
+                <!-- Foto 1 (Destaque - 16:9) -->
+                <div class="polaroid-card destaque">
+                    <div class="foto-container">
+                        <!-- EDITE: src="./fotos/foto1.webp" ou similar quando tiver os arquivos -->
+                        <img src="" loading="lazy" class="webp-ready" alt="Foto Destaque" style="display: none;">
+                        <div class="foto-placeholder">
+                            <span class="placeholder-emoji">🏰</span>
+                            <span class="placeholder-text">O melhor dia da nossa história</span>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">O início do nosso "para sempre"</div>
+                </div>
+
+                <!-- Foto 2 (Quadrada - 1:1) -->
+                <div class="polaroid-card quadrada">
+                    <div class="foto-container">
+                        <img src="" loading="lazy" class="webp-ready" alt="Foto 2" style="display: none;">
+                        <div class="foto-placeholder">
+                            <span class="placeholder-emoji">🍦</span>
+                            <span class="placeholder-text">Risadas e doces momentos</span>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Amo seu sorriso</div>
+                </div>
+
+                <!-- Foto 3 (Quadrada - 1:1) -->
+                <div class="polaroid-card quadrada">
+                    <div class="foto-container">
+                        <img src="" loading="lazy" class="webp-ready" alt="Foto 3" style="display: none;">
+                        <div class="foto-placeholder">
+                            <span class="placeholder-emoji">🌅</span>
+                            <span class="placeholder-text">Aquele abraço quentinho</span>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Meu porto seguro</div>
+                </div>
+
+                <!-- Foto 4 (Quadrada - 1:1) -->
+                <div class="polaroid-card quadrada">
+                    <div class="foto-container">
+                        <img src="" loading="lazy" class="webp-ready" alt="Foto 4" style="display: none;">
+                        <div class="foto-placeholder">
+                            <span class="placeholder-emoji">🐾</span>
+                            <span class="placeholder-text">Companheiras de aventuras</span>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Nossa cumplicidade</div>
+                </div>
+
+                <!-- Foto 5 (Quadrada - 1:1) -->
+                <div class="polaroid-card quadrada">
+                    <div class="foto-container">
+                        <img src="" loading="lazy" class="webp-ready" alt="Foto 5" style="display: none;">
+                        <div class="foto-placeholder">
+                            <span class="placeholder-emoji">✨</span>
+                            <span class="placeholder-text">Detalhes que fazem amar</span>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Mais que mil palavras</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DIVISOR HELLO KITTY -->
+        <div class="divisor">
+            <svg class="hk-bow-svg" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 15 C8 7 1 12 5 21 C8 27 15 20 16 15 Z" fill="#FFB7CC" stroke="#FF8FAB" stroke-width="1.5"/>
+                <circle cx="11" cy="16" r="2" fill="#FF8FAB"/>
+                <path d="M24 15 C32 7 39 12 35 21 C32 27 25 20 24 15 Z" fill="#FFB7CC" stroke="#FF8FAB" stroke-width="1.5"/>
+                <circle cx="29" cy="16" r="2" fill="#FF8FAB"/>
+                <circle cx="20" cy="15" r="5" fill="#FF8FAB"/>
+                <circle cx="20" cy="15" r="3" fill="#FFB7CC"/>
+            </svg>
+        </div>
+
+        <!-- 5. MINI-PLAYER DE VINIL -->
+        <section class="bau-section scroll-reveal" id="player-secao">
+            <div class="section-header">
+                <h3 class="section-title">Nossa Trilha Sonora</h3>
+                <p class="section-subtitle">dê o play nas nossas lembranças 🎵</p>
+            </div>
+
+            <div class="player-card">
+                <div class="vinil-wrapper">
+                    <div class="vinil-disc" id="vinil-disc">
+                        <div class="vinil-hole"></div>
+                    </div>
+                </div>
+                <div class="player-info">
+                    <div class="track-title" id="track-title">Demonstração de Música</div>
+                    <div class="track-artist" id="track-artist">Toque para ouvir</div>
+                </div>
+                <div class="player-controls">
+                    <button class="play-btn" id="play-btn" aria-label="Tocar música">
+                        <!-- Ícone de Play (HTML/CSS inline) -->
+                        <svg viewBox="0 0 24 24" id="play-icon">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <!-- Ícone de Pause (Escondido por padrão) -->
+                        <svg viewBox="0 0 24 24" id="pause-icon" style="display: none;">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Tag Audio Oculta -->
+                <!-- EDITE: quando tiver os arquivos, coloque o link do primeiro mp3 no src -->
+                <audio id="audio-player" preload="none"></audio>
+            </div>
+        </section>
+
+        <!-- FOOTER (Snoopy Deitado) -->
+        <footer class="footer scroll-reveal">
+            <!-- SVG do Snoopy Deitado Sonhando -->
+            <svg class="snoopy-footer-svg" viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Casinha de Cachorro Simplificada (Ouro Rosé) -->
+                <path d="M20 60 L100 60 L100 68 L20 68 Z" fill="#D4956A"/>
+                <path d="M30 60 L30 35 L50 20 L70 35 L70 60 Z" fill="#E8A7B6"/>
+                <path d="M25 35 L50 16 L75 35 Z" stroke="#4A3538" stroke-width="2" fill="none"/>
+                <!-- Snoopy deitado no telhado -->
+                <!-- Corpo deitado -->
+                <ellipse cx="50" cy="22" rx="14" ry="5" fill="#ffffff" stroke="#4A3538" stroke-width="1.5"/>
+                <!-- Cabeça -->
+                <ellipse cx="62" cy="17" rx="6" ry="5" fill="#ffffff" stroke="#4A3538" stroke-width="1.5"/>
+                <!-- Orelha -->
+                <path d="M58 17 C57 21 60 22 60 17 Z" fill="#4A3538"/>
+                <!-- Perninha e Rabinho -->
+                <path d="M38 22 C36 21 34 23 37 24" stroke="#4A3538" stroke-width="1.5" fill="none"/>
+                <circle cx="44" cy="25" r="1.5" fill="#ffffff" stroke="#4A3538" stroke-width="1"/>
+                <circle cx="49" cy="25" r="1.5" fill="#ffffff" stroke="#4A3538" stroke-width="1"/>
+                <!-- Balão de Pensamento / Coração -->
+                <path d="M72 12 C74 9 78 9 80 12 C82 9 86 9 88 12 C88 16 80 20 80 20 C80 20 72 16 72 12 Z" fill="#FF8FAB"/>
+            </svg>
+            <p class="footer-text">Feito com todo o amor do mundo <span class="footer-heart">❤</span></p>
+        </footer>
+
+    </div>
+
+    <!-- BOTÃO DO DENGO (FAB) -->
+    <div class="dengo-fab" id="dengo-fab">
+        <!-- Ícone do Snoopy segurando um coração -->
+        <svg class="snoopy-fab-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cabeça do Snoopy -->
+            <path d="M15 15 C15 11, 21 11, 23 14 C25 12, 28 14, 27 18 C26 22, 21 24, 18 24 C15 24, 15 20, 15 15 Z" fill="#ffffff" stroke="#4A3538" stroke-width="1.5"/>
+            <!-- Orelha preta -->
+            <path d="M16 15 C15 18, 18 20, 18 16 Z" fill="#4A3538"/>
+            <!-- Focinho -->
+            <circle cx="28" cy="18" r="1.5" fill="#4A3538"/>
+            <!-- Coraçãozinho que ele segura -->
+            <path d="M21 21 C18 18, 16 19, 16 22 C16 25, 21 28, 21 28 C21 28, 26 25, 26 22 C26 19, 24 18, 21 21 Z" fill="#FF8FAB"/>
+        </svg>
+    </div>
+
+    <!-- TOAST DO DENGO -->
+    <div class="dengo-toast" id="dengo-toast">
+        <div class="toast-content" id="toast-text">
+            Vale um abraço apertado de 5 minutos! 🤗
+        </div>
+    </div>
+
+    <!-- 11. CÓDIGO JAVASCRIPT ATIVADO -->
+    <script>
+        /* ==========================================================================
+           EDITE AQUI — SEUS DADOS PESSOAIS
+           Todos os textos plugáveis estão aqui em cima
+           ========================================================================== */
+
+        // Data do início do namoro (ano, mês-1, dia)
+        // Maria Clara: 16 de abril de 2024 -> new Date(2024, 3, 16)
+        const DATA_INICIO = new Date(2024, 3, 16); /* EDITE: data oficial */
+
+        // Playlist de músicas (plugue o caminho dos seus arquivos .mp3 após o deploy)
+        const PLAYLIST = [
+            { titulo: 'Nossa Música Principal', artista: 'Seu Cantor Favorito', src: '' } /* EDITE: caminho da música */
+        ];
+
+        // Mensagens do Botão do Dengo com apelidos da Maria Clara
+        const MENSAGENS_DENGO = [
+            'Vale um beijinho na testa, meu bem! 😘',
+            'Você é a minha princesa favorita, Maria Clara! 👑',
+            'Um abraço bem quentinho para a minha gatinha! 🐾',
+            'Vale um cafuné de 10 minutos, meu amor! 🌸',
+            'Você me faz o homem mais feliz do mundo, minha linda! 💖',
+            'Minha mulher, eu te amo mais que tudo nesse universo! ✨',
+            'Que tal um brigadeiro feito por mim hoje? 🍫',
+            'Você brilha mais que todas as lanternas de Corona juntas! 🌌'
+        ];
+
+        /* ==========================================================================
+           LÓGICA DO SISTEMA (ETAPA 3)
+           ========================================================================== */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. GERAÇÃO DINÂMICA DE ESTRELAS NA SPLASH ---
+            const splash = document.getElementById('splash');
+            if (splash) {
+                const fragment = document.createDocumentFragment();
+                const starCount = 55;
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    const size = Math.random() * 2 + 1; // 1px a 3px
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 90}%`;
+                    star.style.animationDelay = `${Math.random() * 5}s`;
+                    star.style.animationDuration = `${Math.random() * 3 + 2.5}s`;
+                    fragment.appendChild(star);
+                }
+                splash.appendChild(fragment);
+            }
+
+            // --- 2. TRANSIÇÃO DA SPLASH PARA O CONTEÚDO PRINCIPAL ---
+            const openBtn = document.getElementById('open-btn');
+            const mainContent = document.getElementById('main');
+            
+            if (openBtn && splash && mainContent) {
+                openBtn.addEventListener('click', () => {
+                    // Fade-out suave da splash
+                    splash.classList.add('fade-out');
+                    // Mostrar conteúdo principal
+                    mainContent.classList.add('visible');
+                    
+                    // Remover splash do DOM após transição para economizar memória e CPU
+                    setTimeout(() => {
+                        splash.style.display = 'none';
+                    }, 900);
+                });
+            }
+
+            // --- 3. CONTADOR DE TEMPO PRECISO (requestAnimationFrame) ---
+            let lastSecond = -1;
+
+            function updateCounter() {
+                const now = new Date();
+                const currentSec = now.getSeconds();
+                
+                // Atualizar DOM somente se o segundo mudar (poupa ciclos de CPU)
+                if (currentSec !== lastSecond) {
+                    lastSecond = currentSec;
+
+                    // Diferença geral em anos, meses e dias considerando variações mensais
+                    let years = now.getFullYear() - DATA_INICIO.getFullYear();
+                    let months = now.getMonth() - DATA_INICIO.getMonth();
+                    let days = now.getDate() - DATA_INICIO.getDate();
+
+                    if (days < 0) {
+                        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                        days += prevMonth.getDate();
+                        months--;
+                    }
+                    if (months < 0) {
+                        months += 12;
+                        years--;
+                    }
+
+                    // Diferença de horas, minutos e segundos
+                    let hours = now.getHours() - DATA_INICIO.getHours();
+                    let minutes = now.getMinutes() - DATA_INICIO.getMinutes();
+                    let seconds = now.getSeconds() - DATA_INICIO.getSeconds();
+
+                    if (seconds < 0) {
+                        seconds += 60;
+                        minutes--;
+                    }
+                    if (minutes < 0) {
+                        minutes += 60;
+                        hours--;
+                    }
+                    if (hours < 0) {
+                        hours += 24;
+                        days--;
+                        if (days < 0) {
+                            const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                            days += prevMonth.getDate();
+                            months--;
+                            if (months < 0) {
+                                months += 12;
+                                years--;
+                            }
+                        }
+                    }
+
+                    // Atualizar elementos na tela
+                    document.getElementById('years').textContent = String(years).padStart(2, '0');
+                    document.getElementById('months').textContent = String(months).padStart(2, '0');
+                    document.getElementById('days').textContent = String(days).padStart(2, '0');
+                    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                }
+
+                requestAnimationFrame(updateCounter);
+            }
+
+            // Iniciar o loop do contador
+            updateCounter();
+
+            // --- 4. ABERTURA/FECHAMENTO DOS ENVELOPES DE CARTAS ---
+            const envelopes = document.querySelectorAll('.envelope-card');
+            envelopes.forEach(card => {
+                const flap = card.querySelector('.envelope-flap');
+                const preview = card.querySelector('.envelope-preview');
+                
+                const toggleEnvelope = () => {
+                    // Se o envelope atual for clicado, inverte
+                    card.classList.toggle('open');
+                };
+
+                if (flap) flap.addEventListener('click', toggleEnvelope);
+                if (preview) preview.addEventListener('click', toggleEnvelope);
+            });
+
+            // --- 5. LÓGICA DO MINI-PLAYER DE VINIL ---
+            const audioPlayer = document.getElementById('audio-player');
+            const playBtn = document.getElementById('play-btn');
+            const vinilDisc = document.getElementById('vinil-disc');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            const trackTitle = document.getElementById('track-title');
+            const trackArtist = document.getElementById('track-artist');
+
+            let isPlaying = false;
+            let currentTrackIndex = 0;
+
+            function updatePlayerUI() {
+                const track = PLAYLIST[currentTrackIndex];
+                if (track) {
+                    trackTitle.textContent = track.titulo;
+                    trackArtist.textContent = track.artista;
+                }
+            }
+
+            if (playBtn && audioPlayer && vinilDisc) {
+                playBtn.addEventListener('click', () => {
+                    const track = PLAYLIST[currentTrackIndex];
+                    if (!track) return;
+
+                    if (isPlaying) {
+                        isPlaying = false;
+                        vinilDisc.classList.remove('spinning');
+                        playIcon.style.display = 'block';
+                        pauseIcon.style.display = 'none';
+                        if (track.src) {
+                            audioPlayer.pause();
+                        }
+                    } else {
+                        isPlaying = true;
+                        vinilDisc.classList.add('spinning');
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                        
+                        // Executa áudio apenas se houver fonte configurada pelo usuário
+                        if (track.src) {
+                            if (audioPlayer.src !== track.src) {
+                                audioPlayer.src = track.src;
+                            }
+                            audioPlayer.play().catch(err => {
+                                console.warn("Interação requerida ou erro no arquivo de áudio:", err);
+                            });
+                        }
+                    }
+                });
+            }
+
+            // Inicializar texto da trilha sonora
+            updatePlayerUI();
+
+            // --- 6. BOTÃO DO DENGO (FAB) E TOAST DO SNOOPY ---
+            const dengoFab = document.getElementById('dengo-fab');
+            const dengoToast = document.getElementById('dengo-toast');
+            const toastText = document.getElementById('toast-text');
+            let toastTimeout = null;
+
+            if (dengoFab && dengoToast && toastText) {
+                dengoFab.addEventListener('click', () => {
+                    // Escolhe uma mensagem aleatória
+                    const randomIndex = Math.floor(Math.random() * MENSAGENS_DENGO.length);
+                    toastText.textContent = MENSAGENS_DENGO[randomIndex];
+                    
+                    // Exibe o toast
+                    dengoToast.classList.add('show');
+                    
+                    // Reseta timeout ativo para evitar fila de fechamento
+                    if (toastTimeout) {
+                        clearTimeout(toastTimeout);
+                    }
+                    
+                    // Oculta automaticamente após 3.8 segundos
+                    toastTimeout = setTimeout(() => {
+                        dengoToast.classList.remove('show');
+                    }, 3800);
+                });
+
+                // Fecha o toast ao tocá-lo
+                dengoToast.addEventListener('click', () => {
+                    dengoToast.classList.remove('show');
+                    if (toastTimeout) {
+                        clearTimeout(toastTimeout);
+                    }
+                });
+            }
+
+            // --- 7. ANIMAÇÕES DE SCROLL (IntersectionObserver) ---
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('reveal-active');
+                            // Para de observar o elemento para poupar CPU
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: "0px 0px -40px 0px"
+                });
+
+                revealElements.forEach(el => revealObserver.observe(el));
+            } else {
+                // Fallback para navegadores muito antigos ou sem suporte
+                revealElements.forEach(el => el.classList.add('reveal-active'));
+            }
+        });
+    </script>
+</body>
+</html>
