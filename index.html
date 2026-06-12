@@ -19,16 +19,20 @@
            1. VARIÁVEIS & RESET
            ========================================================================== */
         :root {
-            --color-bg-light: #FFF5F7;
-            --color-bg-mid1: #FCDDE6;
-            --color-bg-mid2: #F4B8C8;
+            /* Tema Rosa Escuro Romântico */
+            --color-bg-light: #160713;
+            --color-bg-mid1: #230c1d;
+            --color-bg-mid2: #34122b;
             --color-rose-gold: #E8A7B6;
-            --color-warm-gold: #D4956A;
-            --color-text-main: #4A3538;
-            --color-text-muted: #8B6B6E;
+            --color-warm-gold: #FEDB8F; /* Corona Gold */
+            --color-text-main: #FFF0F2;
+            --color-text-muted: #D5ADB6;
             --color-white: #ffffff;
             --color-hk-pink: #FFB7CC;
             --color-hk-dark-pink: #FF8FAB;
+            
+            --color-card-bg: rgba(37, 11, 30, 0.85);
+            --color-card-border: rgba(232, 167, 182, 0.3);
             
             --font-fancy: 'Caveat', cursive;
             --font-ui: 'Lato', sans-serif;
@@ -48,16 +52,49 @@
             font-weight: 300;
             color: var(--color-text-main);
             background: linear-gradient(180deg, 
-                var(--color-bg-light) 0%, 
-                var(--color-bg-mid1) 25%, 
-                var(--color-bg-mid2) 50%, 
-                var(--color-rose-gold) 75%, 
-                var(--color-warm-gold) 100%);
+                #160713 0%, 
+                #230c1d 25%, 
+                #34122b 50%, 
+                #441437 75%, 
+                #23051b 100%);
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
         }
+
+        /* Ambient floating container in background */
+        #ambient-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .floating-ambient-item {
+            position: absolute;
+            bottom: -60px;
+            will-change: transform, opacity;
+            opacity: 0;
+        }
+        
+        .wobble-1 { animation: floatUpAmbient 22s linear infinite, wobbleX1 4s ease-in-out infinite alternate; }
+        .wobble-2 { animation: floatUpAmbient 26s linear infinite, wobbleX2 5s ease-in-out infinite alternate; }
+        .wobble-3 { animation: floatUpAmbient 19s linear infinite, wobbleX3 3.5s ease-in-out infinite alternate; }
+        
+        @keyframes floatUpAmbient {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.45; }
+            90% { opacity: 0.45; }
+            100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes wobbleX1 { 0% { margin-left: -15px; } 100% { margin-left: 15px; } }
+        @keyframes wobbleX2 { 0% { margin-left: -25px; } 100% { margin-left: 25px; } }
+        @keyframes wobbleX3 { 0% { margin-left: -10px; } 100% { margin-left: 10px; } }
 
         /* Acessibilidade: Reduzir animações se o usuário preferir */
         @media (prefers-reduced-motion: reduce) {
@@ -307,13 +344,13 @@
         }
 
         .counter-card {
-            background: rgba(255, 255, 255, 0.62);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(232, 167, 182, 0.3);
+            background: var(--color-card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--color-card-border);
             border-radius: 14px;
             padding: 12px 6px;
-            box-shadow: 0 4px 12px rgba(74, 53, 56, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -397,10 +434,10 @@
         .envelope-card {
             width: 100%;
             max-width: 440px;
-            background: var(--color-white);
+            background: var(--color-card-bg);
             border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(74, 53, 56, 0.08);
-            border: 1px solid rgba(232, 167, 182, 0.25);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--color-card-border);
             overflow: hidden;
             transition: transform 0.3s ease;
         }
@@ -490,27 +527,46 @@
         }
 
         .envelope-card.open .carta-content {
-            max-height: 700px; /* Suficiente para o texto */
+            max-height: 850px; /* Expandido para acomodar o cabeçalho decorado */
             border-top: 1px dashed rgba(232, 167, 182, 0.3);
         }
 
         /* Papel pautado */
         .carta-paper {
-            background: var(--color-white);
+            background: #ffeef1;
             background-image: repeating-linear-gradient(
-                var(--color-white) 0px, 
-                var(--color-white) 27px, 
-                rgba(232, 167, 182, 0.15) 27px, 
-                rgba(232, 167, 182, 0.15) 28px
+                #ffeef1 0px, 
+                #ffeef1 27px, 
+                rgba(232, 167, 182, 0.2) 27px, 
+                rgba(232, 167, 182, 0.2) 28px
             );
             padding: 24px 28px;
             line-height: 28px;
         }
 
+        .letter-theme-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed rgba(77, 11, 48, 0.15);
+        }
+
+        .letter-theme-quote {
+            font-family: var(--font-fancy);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: #8b265a;
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+
         .carta-text {
             font-family: var(--font-fancy);
-            font-size: 1.25rem;
-            color: #553e41;
+            font-size: 1.35rem;
+            color: #4d0b30;
             text-align: justify;
         }
 
@@ -535,11 +591,11 @@
 
         /* Elemento polaroid */
         .polaroid-card {
-            background-color: var(--color-white);
+            background-color: var(--color-card-bg);
             padding: 10px 10px 24px 10px;
             border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(74, 53, 56, 0.06);
-            border: 1px solid rgba(232, 167, 182, 0.18);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--color-card-border);
             display: flex;
             flex-direction: column;
             position: relative;
@@ -552,7 +608,7 @@
 
         .foto-container {
             width: 100%;
-            background-color: #faf6f7;
+            background-color: #250b1e;
             border-radius: 6px;
             overflow: hidden;
             position: relative;
@@ -589,7 +645,7 @@
             align-items: center;
             padding: 10px;
             text-align: center;
-            background: linear-gradient(135deg, #FFF9FA 0%, #FDF1F4 100%);
+            background: linear-gradient(135deg, #250b1e 0%, #3a102b 100%);
         }
 
         .placeholder-emoji {
@@ -622,15 +678,15 @@
            8. MINI-PLAYER DE VINIL
            ========================================================================== */
         .player-card {
-            background: rgba(255, 255, 255, 0.75);
+            background: var(--color-card-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(232, 167, 182, 0.3);
+            border: 1px solid var(--color-card-border);
             border-radius: 22px;
-            padding: 16px;
-            box-shadow: 0 8px 24px rgba(74, 53, 56, 0.05);
+            padding: 20px 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 16px;
             width: 100%;
         }
@@ -650,7 +706,7 @@
             background: 
                 radial-gradient(circle, transparent 18%, #111 19%, #111 22%, transparent 23%),
                 repeating-conic-gradient(#222 0deg 15deg, #151515 15deg 30deg);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             position: relative;
             will-change: transform;
         }
@@ -677,7 +733,7 @@
             transform: translate(-50%, -50%);
             width: 8px;
             height: 8px;
-            background-color: var(--color-bg-light);
+            background-color: #160713;
             border-radius: 50%;
             z-index: 2;
         }
@@ -721,6 +777,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
         }
 
         .play-btn {
@@ -733,19 +790,127 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(212, 149, 106, 0.25);
-            color: var(--color-white);
+            box-shadow: 0 4px 12px rgba(232, 167, 182, 0.4);
+            color: #160713;
             transition: transform 0.2s ease;
         }
 
         .play-btn:active {
-            transform: scale(0.95);
+            transform: scale(0.92);
         }
 
         .play-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
+        }
+
+        .control-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--color-card-border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-main);
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:active {
+            transform: scale(0.9);
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .control-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        /* Playlist track list */
+        .playlist-container {
+            margin-top: 10px;
+            max-height: 180px;
+            overflow-y: auto;
+            border-radius: 12px;
+            background: rgba(22, 7, 19, 0.5);
+            border: 1px solid var(--color-card-border);
+            padding: 6px;
+        }
+
+        .playlist-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .playlist-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .playlist-container::-webkit-scrollbar-thumb {
+            background: var(--color-card-border);
+            border-radius: 4px;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            gap: 10px;
+        }
+
+        .playlist-item:hover {
+            background: rgba(232, 167, 182, 0.08);
+        }
+
+        .playlist-item.active {
+            background: rgba(232, 167, 182, 0.15);
+        }
+
+        .playlist-item-num {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            width: 18px;
+            text-align: center;
+        }
+
+        .playlist-item-details {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .playlist-item-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .playlist-item-artist {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .playlist-item-playing {
+            color: var(--color-rose-gold);
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: none;
+        }
+
+        .playlist-item.active .playlist-item-playing {
+            display: block;
         }
 
         /* ==========================================================================
@@ -784,17 +949,19 @@
             bottom: 96px;
             left: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(37, 11, 30, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 16px;
             padding: 16px 20px;
-            box-shadow: 0 10px 30px rgba(74, 53, 56, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--color-card-border);
             border-left: 4px solid var(--color-rose-gold);
             z-index: 500;
             display: flex;
             align-items: center;
             gap: 12px;
+            color: var(--color-text-main);
             
             /* Estado oculto padrão */
             opacity: 0;
@@ -853,6 +1020,8 @@
     </style>
 </head>
 <body>
+    <!-- Ambient floating container in background -->
+    <div id="ambient-container"></div>
 
     <!-- 1. SPLASH SCREEN (O Céu de Corona) -->
     <div id="splash">
@@ -1015,7 +1184,18 @@
                     </div>
                     <div class="carta-content">
                         <div class="carta-paper">
-                            <!-- EDITE: texto da carta 1 -->
+                            <div class="letter-theme-header">
+                                <svg width="28" height="28" viewBox="0 0 100 100" fill="#D4956A" style="filter: drop-shadow(0 0 3px rgba(212, 149, 106, 0.4));">
+                                    <circle cx="50" cy="50" r="16"/>
+                                    <path d="M50 8 C48 20 46 26 42 32 C38 26 36 20 50 8 Z" />
+                                    <path d="M50 92 C52 80 54 74 58 68 C62 74 64 80 50 92 Z" />
+                                    <path d="M8 50 C20 52 26 54 32 58 C26 62 20 64 8 50 Z" />
+                                    <path d="M92 50 C80 48 74 46 68 42 C74 38 80 36 92 50 Z" />
+                                    <path d="M20 20 C30 24 35 28 39 34 C33 36 27 38 20 20 Z" />
+                                    <path d="M80 80 C70 76 65 72 61 66 C67 64 73 62 80 80 Z" />
+                                </svg>
+                                <span class="letter-theme-quote">"Você é a minha nova lanterna flutuante favorita. Vejo enfim a luz brilhar! ☀️"</span>
+                            </div>
                             <p class="carta-text">
                                 Maria Clara, meu bem, parece que foi ontem que a nossa história começou. Desde aquele dia 16 de abril de 2024, a minha vida ganhou um brilho totalmente diferente, mais leve, doce e cheio de sorrisos. Olhar para trás e ver tudo o que já compartilhamos me faz ter a certeza de que cada detalhe conspirou para estarmos juntos. Você é o meu refúgio e o início da minha melhor fase.
                             </p>
@@ -1036,7 +1216,12 @@
                     </div>
                     <div class="carta-content">
                         <div class="carta-paper">
-                            <!-- EDITE: texto da carta 2 -->
+                            <div class="letter-theme-header">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="#4A3538">
+                                    <circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="16" r="5"/><circle cx="5" cy="13" r="2.5"/><circle cx="19" cy="13" r="2.5"/>
+                                </svg>
+                                <span class="letter-theme-quote">"Ao seu lado, até o dengo mais simples vira um momento mágico. 🐾"</span>
+                            </div>
                             <p class="carta-text">
                                 Eu te amo pelas pequenas coisas, minha linda: pelo seu sorriso que ilumina o meu dia, pelo seu abraço que me traz paz instantânea e pelo seu jeito único de cuidar de mim. Amo a sua força, o seu carinho e a forma como a gente se entende sem precisar dizer nenhuma palavra. Você é a minha gatinha, minha princesa e a pessoa que eu escolho todos os dias para amar e proteger.
                             </p>
@@ -1057,7 +1242,14 @@
                     </div>
                     <div class="carta-content">
                         <div class="carta-paper">
-                            <!-- EDITE: texto da carta 3 -->
+                            <div class="letter-theme-header">
+                                <svg width="32" height="24" viewBox="0 0 40 30" fill="#FFB7CC" stroke="#FF8FAB" stroke-width="1.5">
+                                    <path d="M16 15 C8 7 1 12 5 21 C8 27 15 20 16 15 Z"/>
+                                    <path d="M24 15 C32 7 39 12 35 21 C32 27 25 20 24 15 Z"/>
+                                    <circle cx="20" cy="15" r="5" fill="#FF8FAB"/>
+                                </svg>
+                                <span class="letter-theme-quote">"Você é o laço mais bonito que a vida já amarrou no meu coração. 🎀"</span>
+                            </div>
                             <p class="carta-text">
                                 Quando fecho os olhos e penso no amanhã, minha mulher, vejo você ao meu lado em todas as conquistas e aventuras. Quero construir uma vida linda com você, cheia de dias calmos, viagens inesquecíveis e risadas infinitas. Nosso amor é como aquelas lanternas flutuantes subindo ao céu: brilhante, livre e infinito. Mal posso esperar pelo nosso futuro juntos.
                             </p>
@@ -1174,30 +1366,43 @@
             </div>
 
             <div class="player-card">
-                <div class="vinil-wrapper">
-                    <div class="vinil-disc" id="vinil-disc">
-                        <div class="vinil-hole"></div>
+                <div class="player-main-row" style="display: flex; align-items: center; gap: 16px; width: 100%;">
+                    <div class="vinil-wrapper">
+                        <div class="vinil-disc" id="vinil-disc">
+                            <div class="vinil-hole"></div>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <div class="track-title" id="track-title">Demonstração de Música</div>
+                        <div class="track-artist" id="track-artist">Toque para ouvir</div>
+                    </div>
+                    <div class="player-controls">
+                        <button class="control-btn" id="prev-btn" aria-label="Música anterior">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                            </svg>
+                        </button>
+                        <button class="play-btn" id="play-btn" aria-label="Tocar música">
+                            <!-- Ícone de Play (HTML/CSS inline) -->
+                            <svg viewBox="0 0 24 24" id="play-icon">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <!-- Ícone de Pause (Escondido por padrão) -->
+                            <svg viewBox="0 0 24 24" id="pause-icon" style="display: none;">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        </button>
+                        <button class="control-btn" id="next-btn" aria-label="Próxima música">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 18l8.5-6L6 6zm9-12v12h2V6z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="player-info">
-                    <div class="track-title" id="track-title">Demonstração de Música</div>
-                    <div class="track-artist" id="track-artist">Toque para ouvir</div>
-                </div>
-                <div class="player-controls">
-                    <button class="play-btn" id="play-btn" aria-label="Tocar música">
-                        <!-- Ícone de Play (HTML/CSS inline) -->
-                        <svg viewBox="0 0 24 24" id="play-icon">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                        <!-- Ícone de Pause (Escondido por padrão) -->
-                        <svg viewBox="0 0 24 24" id="pause-icon" style="display: none;">
-                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                        </svg>
-                    </button>
-                </div>
-                <!-- Tag Audio Oculta -->
-                <!-- EDITE: quando tiver os arquivos, coloque o link do primeiro mp3 no src -->
-                <audio id="audio-player" preload="none"></audio>
+                <!-- Playlist track list -->
+                <div class="playlist-container" id="playlist-container"></div>
+                <!-- YouTube player placeholder -->
+                <div id="yt-player" style="display: none;"></div>
             </div>
         </section>
 
@@ -1259,11 +1464,27 @@
 
         // Data do início do namoro (ano, mês-1, dia)
         // Maria Clara: 16 de abril de 2024 -> new Date(2024, 3, 16)
-        const DATA_INICIO = new Date(2024, 3, 16); /* EDITE: data oficial */
+        const DATA_INICIO = new Date(2024, 3, 16);
 
-        // Playlist de músicas (plugue o caminho dos seus arquivos .mp3 após o deploy)
+        // Playlist de músicas do YouTube
         const PLAYLIST = [
-            { titulo: 'Nossa Música Principal', artista: 'Seu Cantor Favorito', src: '' } /* EDITE: caminho da música */
+            { titulo: 'De Janeiro a Janeiro', artista: 'Roberta Campos & Nando Reis', id: 'iU6oF-T5t8A' },
+            { titulo: 'Trevo (Tu)', artista: 'ANAVITÓRIA & Tiago Iorc', id: '0BG2Sc_f12s' },
+            { titulo: 'A Cor É Rosa', artista: 'Silva', id: 'm6v3P2p6w9g' },
+            { titulo: 'Yellow', artista: 'Coldplay', id: 'yKNtZYpt_8w' },
+            { titulo: 'Lover', artista: 'Taylor Swift', id: '-BjZmE2gtdo' },
+            { titulo: 'Perfect', artista: 'Ed Sheeran', id: '2Vv-BfVoq4g' },
+            { titulo: 'Singular', artista: 'Anavitória', id: '2Z9C8gqg75k' },
+            { titulo: 'Outra Vida', artista: 'Armandinho', id: 'c4K4p6u3mEM' },
+            { titulo: 'Photograph', artista: 'Ed Sheeran', id: 'nSDgHBxUbVQ' },
+            { titulo: 'Can\'t Help Falling in Love', artista: 'Elvis Presley', id: 'vGJTaP5snZs' },
+            { titulo: 'Dia Branco', artista: 'Geraldo Azevedo', id: 'SgTzZ2U8Bfs' },
+            { titulo: 'Coisa Linda', artista: 'Tiago Iorc', id: 'a-YgM2_F_90' },
+            { titulo: 'Partilhar', artista: 'Rubel & ANAVITÓRIA', id: 'Z-L1c0Mv7g4' },
+            { titulo: 'Pra Você Guardei O Amor', artista: 'Nando Reis & Ana Cañas', id: 'gX8R-xRswBw' },
+            { titulo: 'Until I Found You', artista: 'Stephen Sanchez', id: 'GxldQ9eX2YQ' },
+            { titulo: 'Meu Abrigo', artista: 'Melim', id: 'mQL7GZ2p8Z8' },
+            { titulo: 'All of Me', artista: 'John Legend', id: '450p7gOxZqI' }
         ];
 
         // Mensagens do Botão do Dengo com apelidos da Maria Clara
@@ -1279,8 +1500,157 @@
         ];
 
         /* ==========================================================================
-           LÓGICA DO SISTEMA (ETAPA 3)
+           LÓGICA DO SISTEMA
            ========================================================================== */
+
+        let ytPlayer;
+        let isPlayerReady = false;
+        let isPlaying = false;
+        let currentTrackIndex = 0;
+
+        // Injeta a API do YouTube
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Chamado automaticamente pela API do YouTube
+        function onYouTubeIframeAPIReady() {
+            ytPlayer = new YT.Player('yt-player', {
+                height: '0',
+                width: '0',
+                videoId: PLAYLIST[currentTrackIndex].id,
+                playerVars: {
+                    playsinline: 1,
+                    controls: 0,
+                    disablekb: 1,
+                    fs: 0,
+                    rel: 0,
+                    showinfo: 0,
+                    iv_load_policy: 3
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            isPlayerReady = true;
+            updatePlayerUI();
+            renderPlaylist();
+        }
+
+        function onPlayerStateChange(event) {
+            const vinilDisc = document.getElementById('vinil-disc');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+
+            if (event.data === YT.PlayerState.ENDED) {
+                // Toca a próxima
+                nextTrack();
+            } else if (event.data === YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                vinilDisc.classList.add('spinning');
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                updatePlaylistActiveItem();
+            } else {
+                isPlaying = false;
+                vinilDisc.classList.remove('spinning');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        function onPlayerError(event) {
+            console.error("Erro no player do YouTube:", event.data);
+            // Avança para a próxima música em caso de erro
+            nextTrack();
+        }
+
+        function updatePlayerUI() {
+            const track = PLAYLIST[currentTrackIndex];
+            if (track) {
+                document.getElementById('track-title').textContent = track.titulo;
+                document.getElementById('track-artist').textContent = track.artista;
+            }
+        }
+
+        function togglePlay() {
+            if (!isPlayerReady || !ytPlayer) return;
+            if (isPlaying) {
+                ytPlayer.pauseVideo();
+            } else {
+                ytPlayer.playVideo();
+            }
+        }
+
+        function nextTrack() {
+            if (!isPlayerReady || !ytPlayer) return;
+            currentTrackIndex = (currentTrackIndex + 1) % PLAYLIST.length;
+            loadAndPlayTrack();
+        }
+
+        function prevTrack() {
+            if (!isPlayerReady || !ytPlayer) return;
+            currentTrackIndex = (currentTrackIndex - 1 + PLAYLIST.length) % PLAYLIST.length;
+            loadAndPlayTrack();
+        }
+
+        function loadAndPlayTrack() {
+            updatePlayerUI();
+            if (ytPlayer && isPlayerReady) {
+                ytPlayer.loadVideoById(PLAYLIST[currentTrackIndex].id);
+                updatePlaylistActiveItem();
+            }
+        }
+
+        function playTrackIndex(index) {
+            if (!isPlayerReady || !ytPlayer) return;
+            currentTrackIndex = index;
+            loadAndPlayTrack();
+        }
+
+        function renderPlaylist() {
+            const container = document.getElementById('playlist-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            PLAYLIST.forEach((track, index) => {
+                const item = document.createElement('div');
+                item.className = `playlist-item ${index === currentTrackIndex ? 'active' : ''}`;
+                item.setAttribute('data-index', index);
+                
+                item.innerHTML = `
+                    <div class="playlist-item-num">${String(index + 1).padStart(2, '0')}</div>
+                    <div class="playlist-item-details">
+                        <div class="playlist-item-title">${track.titulo}</div>
+                        <div class="playlist-item-artist">${track.artista}</div>
+                    </div>
+                    <div class="playlist-item-playing">TOCANDO</div>
+                `;
+
+                item.addEventListener('click', () => {
+                    playTrackIndex(index);
+                });
+
+                container.appendChild(item);
+            });
+        }
+
+        function updatePlaylistActiveItem() {
+            const items = document.querySelectorAll('.playlist-item');
+            items.forEach((item, index) => {
+                if (index === currentTrackIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             // --- 1. GERAÇÃO DINÂMICA DE ESTRELAS NA SPLASH ---
@@ -1291,7 +1661,7 @@
                 for (let i = 0; i < starCount; i++) {
                     const star = document.createElement('div');
                     star.className = 'star';
-                    const size = Math.random() * 2 + 1; // 1px a 3px
+                    const size = Math.random() * 2 + 1;
                     star.style.width = `${size}px`;
                     star.style.height = `${size}px`;
                     star.style.left = `${Math.random() * 100}%`;
@@ -1303,36 +1673,34 @@
                 splash.appendChild(fragment);
             }
 
-            // --- 2. TRANSIÇÃO DA SPLASH PARA O CONTEÚDO PRINCIPAL ---
+            // --- 2. TRANSIÇÃO DA SPLASH ---
             const openBtn = document.getElementById('open-btn');
             const mainContent = document.getElementById('main');
             
             if (openBtn && splash && mainContent) {
                 openBtn.addEventListener('click', () => {
-                    // Fade-out suave da splash
                     splash.classList.add('fade-out');
-                    // Mostrar conteúdo principal
                     mainContent.classList.add('visible');
                     
-                    // Remover splash do DOM após transição para economizar memória e CPU
+                    // Inicia geração de elementos flutuantes ambientais após abrir
+                    startAmbientFloating();
+                    
                     setTimeout(() => {
                         splash.style.display = 'none';
                     }, 900);
                 });
             }
 
-            // --- 3. CONTADOR DE TEMPO PRECISO (requestAnimationFrame) ---
+            // --- 3. CONTADOR DE TEMPO ---
             let lastSecond = -1;
 
             function updateCounter() {
                 const now = new Date();
                 const currentSec = now.getSeconds();
                 
-                // Atualizar DOM somente se o segundo mudar (poupa ciclos de CPU)
                 if (currentSec !== lastSecond) {
                     lastSecond = currentSec;
 
-                    // Diferença geral em anos, meses e dias considerando variações mensais
                     let years = now.getFullYear() - DATA_INICIO.getFullYear();
                     let months = now.getMonth() - DATA_INICIO.getMonth();
                     let days = now.getDate() - DATA_INICIO.getDate();
@@ -1347,7 +1715,6 @@
                         years--;
                     }
 
-                    // Diferença de horas, minutos e segundos
                     let hours = now.getHours() - DATA_INICIO.getHours();
                     let minutes = now.getMinutes() - DATA_INICIO.getMinutes();
                     let seconds = now.getSeconds() - DATA_INICIO.getSeconds();
@@ -1374,7 +1741,6 @@
                         }
                     }
 
-                    // Atualizar elementos na tela
                     document.getElementById('years').textContent = String(years).padStart(2, '0');
                     document.getElementById('months').textContent = String(months).padStart(2, '0');
                     document.getElementById('days').textContent = String(days).padStart(2, '0');
@@ -1386,17 +1752,15 @@
                 requestAnimationFrame(updateCounter);
             }
 
-            // Iniciar o loop do contador
             updateCounter();
 
-            // --- 4. ABERTURA/FECHAMENTO DOS ENVELOPES DE CARTAS ---
+            // --- 4. ENVELOPES ---
             const envelopes = document.querySelectorAll('.envelope-card');
             envelopes.forEach(card => {
                 const flap = card.querySelector('.envelope-flap');
                 const preview = card.querySelector('.envelope-preview');
                 
                 const toggleEnvelope = () => {
-                    // Se o envelope atual for clicado, inverte
                     card.classList.toggle('open');
                 };
 
@@ -1404,62 +1768,16 @@
                 if (preview) preview.addEventListener('click', toggleEnvelope);
             });
 
-            // --- 5. LÓGICA DO MINI-PLAYER DE VINIL ---
-            const audioPlayer = document.getElementById('audio-player');
+            // --- 5. BOTOES DO PLAYER ---
             const playBtn = document.getElementById('play-btn');
-            const vinilDisc = document.getElementById('vinil-disc');
-            const playIcon = document.getElementById('play-icon');
-            const pauseIcon = document.getElementById('pause-icon');
-            const trackTitle = document.getElementById('track-title');
-            const trackArtist = document.getElementById('track-artist');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
 
-            let isPlaying = false;
-            let currentTrackIndex = 0;
+            if (playBtn) playBtn.addEventListener('click', togglePlay);
+            if (prevBtn) prevBtn.addEventListener('click', prevTrack);
+            if (nextBtn) nextBtn.addEventListener('click', nextTrack);
 
-            function updatePlayerUI() {
-                const track = PLAYLIST[currentTrackIndex];
-                if (track) {
-                    trackTitle.textContent = track.titulo;
-                    trackArtist.textContent = track.artista;
-                }
-            }
-
-            if (playBtn && audioPlayer && vinilDisc) {
-                playBtn.addEventListener('click', () => {
-                    const track = PLAYLIST[currentTrackIndex];
-                    if (!track) return;
-
-                    if (isPlaying) {
-                        isPlaying = false;
-                        vinilDisc.classList.remove('spinning');
-                        playIcon.style.display = 'block';
-                        pauseIcon.style.display = 'none';
-                        if (track.src) {
-                            audioPlayer.pause();
-                        }
-                    } else {
-                        isPlaying = true;
-                        vinilDisc.classList.add('spinning');
-                        playIcon.style.display = 'none';
-                        pauseIcon.style.display = 'block';
-                        
-                        // Executa áudio apenas se houver fonte configurada pelo usuário
-                        if (track.src) {
-                            if (audioPlayer.src !== track.src) {
-                                audioPlayer.src = track.src;
-                            }
-                            audioPlayer.play().catch(err => {
-                                console.warn("Interação requerida ou erro no arquivo de áudio:", err);
-                            });
-                        }
-                    }
-                });
-            }
-
-            // Inicializar texto da trilha sonora
-            updatePlayerUI();
-
-            // --- 6. BOTÃO DO DENGO (FAB) E TOAST DO SNOOPY ---
+            // --- 6. BOTÃO DO DENGO ---
             const dengoFab = document.getElementById('dengo-fab');
             const dengoToast = document.getElementById('dengo-toast');
             const toastText = document.getElementById('toast-text');
@@ -1467,42 +1785,30 @@
 
             if (dengoFab && dengoToast && toastText) {
                 dengoFab.addEventListener('click', () => {
-                    // Escolhe uma mensagem aleatória
                     const randomIndex = Math.floor(Math.random() * MENSAGENS_DENGO.length);
                     toastText.textContent = MENSAGENS_DENGO[randomIndex];
-                    
-                    // Exibe o toast
                     dengoToast.classList.add('show');
                     
-                    // Reseta timeout ativo para evitar fila de fechamento
-                    if (toastTimeout) {
-                        clearTimeout(toastTimeout);
-                    }
+                    if (toastTimeout) clearTimeout(toastTimeout);
                     
-                    // Oculta automaticamente após 3.8 segundos
                     toastTimeout = setTimeout(() => {
                         dengoToast.classList.remove('show');
                     }, 3800);
                 });
 
-                // Fecha o toast ao tocá-lo
                 dengoToast.addEventListener('click', () => {
                     dengoToast.classList.remove('show');
-                    if (toastTimeout) {
-                        clearTimeout(toastTimeout);
-                    }
+                    if (toastTimeout) clearTimeout(toastTimeout);
                 });
             }
 
-            // --- 7. ANIMAÇÕES DE SCROLL (IntersectionObserver) ---
+            // --- 7. ANIMAÇÕES DE SCROLL ---
             const revealElements = document.querySelectorAll('.scroll-reveal');
-            
             if ('IntersectionObserver' in window) {
                 const revealObserver = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('reveal-active');
-                            // Para de observar o elemento para poupar CPU
                             observer.unobserve(entry.target);
                         }
                     });
@@ -1510,11 +1816,58 @@
                     threshold: 0.1,
                     rootMargin: "0px 0px -40px 0px"
                 });
-
                 revealElements.forEach(el => revealObserver.observe(el));
             } else {
-                // Fallback para navegadores muito antigos ou sem suporte
                 revealElements.forEach(el => el.classList.add('reveal-active'));
+            }
+
+            // --- 8. GERADOR DE ELEMENTOS FLUTUANTES AMBIENTAIS ---
+            function startAmbientFloating() {
+                const container = document.getElementById('ambient-container');
+                if (!container) return;
+
+                // SVGs dos elementos
+                const svgs = [
+                    // Coração
+                    `<svg width="22" height="22" viewBox="0 0 24 24" fill="#FF8FAB"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+                    // Lanterna
+                    `<svg width="20" height="28" viewBox="0 0 40 60"><rect x="5" y="5" width="30" height="42" rx="4" fill="#FEDB8F" fill-opacity="0.85"/><ellipse cx="20" cy="26" rx="9" ry="12" fill="#FFA834" fill-opacity="0.95"/></svg>`,
+                    // Laço Hello Kitty
+                    `<svg width="24" height="18" viewBox="0 0 40 30" fill="#FFB7CC"><path d="M16 15 C8 7 1 12 5 21 C8 27 15 20 16 15 Z" stroke="#FF8FAB" stroke-width="1.5"/><path d="M24 15 C32 7 39 12 35 21 C32 27 25 20 24 15 Z" stroke="#FF8FAB" stroke-width="1.5"/><circle cx="20" cy="15" r="5" fill="#FF8FAB"/></svg>`,
+                    // Patinha Snoopy
+                    `<svg width="18" height="18" viewBox="0 0 24 24" fill="#D5ADB6" fill-opacity="0.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="16" r="5"/><circle cx="5" cy="13" r="2.5"/><circle cx="19" cy="13" r="2.5"/></svg>`
+                ];
+
+                function spawnItem() {
+                    if (container.childElementCount > 18) return;
+
+                    const item = document.createElement('div');
+                    item.className = 'floating-ambient-item';
+                    
+                    const wobbleNum = Math.floor(Math.random() * 3) + 1;
+                    item.classList.add(`wobble-${wobbleNum}`);
+                    item.innerHTML = svgs[Math.floor(Math.random() * svgs.length)];
+
+                    const leftPos = Math.random() * 95;
+                    const scale = Math.random() * 0.7 + 0.6; // 0.6 a 1.3
+                    const duration = Math.random() * 10 + 15; // 15s a 25s
+                    
+                    item.style.left = `${leftPos}%`;
+                    item.style.transform = `scale(${scale})`;
+                    item.style.animationDuration = `${duration}s`;
+
+                    container.appendChild(item);
+
+                    setTimeout(() => {
+                        item.remove();
+                    }, duration * 1000);
+                }
+
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(spawnItem, Math.random() * 8000);
+                }
+
+                setInterval(spawnItem, 3500);
             }
         });
     </script>

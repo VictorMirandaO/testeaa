@@ -1042,7 +1042,7 @@ fun HomeScreen(
                     // --- SEÇÃO EXCLUSIVA: NOSSAS MÚSICAS PARA MARIA CLARA ---
                     item(key = "nossas_musicas_title") {
                         NavigationTitle(
-                            title = "Nossas Músicas 💖",
+                            title = "Nossas Músicas 💖 🐾 🎀 👑",
                             modifier = Modifier.animateItem()
                         )
                     }
@@ -1051,28 +1051,127 @@ fun HomeScreen(
                         val playlistMariaClara = remember {
                             listOf(
                                 MediaMetadata(
-                                    id = "dQw4w9WgXcQ", // EDITE: Cole o ID do YouTube da música 1
-                                    title = "Nome da Música 1",
-                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Artista 1")),
-                                    duration = 210,
-                                    thumbnailUrl = "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                    id = "iU6oF-T5t8A",
+                                    title = "De Janeiro a Janeiro",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Roberta Campos & Nando Reis")),
+                                    duration = 190,
+                                    thumbnailUrl = "https://img.youtube.com/vi/iU6oF-T5t8A/hqdefault.jpg"
                                 ),
                                 MediaMetadata(
-                                    id = "dQw4w9WgXcQ", // EDITE: Cole o ID do YouTube da música 2
-                                    title = "Nome da Música 2",
-                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Artista 2")),
+                                    id = "0BG2Sc_f12s",
+                                    title = "Trevo (Tu)",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "ANAVITÓRIA & Tiago Iorc")),
+                                    duration = 206,
+                                    thumbnailUrl = "https://img.youtube.com/vi/0BG2Sc_f12s/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "m6v3P2p6w9g",
+                                    title = "A Cor É Rosa",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Silva")),
+                                    duration = 222,
+                                    thumbnailUrl = "https://img.youtube.com/vi/m6v3P2p6w9g/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "yKNtZYpt_8w",
+                                    title = "Yellow",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Coldplay")),
+                                    duration = 269,
+                                    thumbnailUrl = "https://img.youtube.com/vi/yKNtZYpt_8w/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "-BjZmE2gtdo",
+                                    title = "Lover",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Taylor Swift")),
+                                    duration = 221,
+                                    thumbnailUrl = "https://img.youtube.com/vi/-BjZmE2gtdo/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "2Vv-BfVoq4g",
+                                    title = "Perfect",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Ed Sheeran")),
+                                    duration = 279,
+                                    thumbnailUrl = "https://img.youtube.com/vi/2Vv-BfVoq4g/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "2Z9C8gqg75k",
+                                    title = "Singular",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Anavitória")),
+                                    duration = 220,
+                                    thumbnailUrl = "https://img.youtube.com/vi/2Z9C8gqg75k/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "c4K4p6u3mEM",
+                                    title = "Outra Vida",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Armandinho")),
                                     duration = 180,
-                                    thumbnailUrl = "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                    thumbnailUrl = "https://img.youtube.com/vi/c4K4p6u3mEM/hqdefault.jpg"
                                 ),
                                 MediaMetadata(
-                                    id = "dQw4w9WgXcQ", // EDITE: Cole o ID do YouTube da música 3
-                                    title = "Nome da Música 3",
-                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Artista 3")),
-                                    duration = 240,
-                                    thumbnailUrl = "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                    id = "nSDgHBxUbVQ",
+                                    title = "Photograph",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Ed Sheeran")),
+                                    duration = 274,
+                                    thumbnailUrl = "https://img.youtube.com/vi/nSDgHBxUbVQ/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "vGJTaP5snZs",
+                                    title = "Can't Help Falling in Love",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Elvis Presley")),
+                                    duration = 182,
+                                    thumbnailUrl = "https://img.youtube.com/vi/vGJTaP5snZs/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "SgTzZ2U8Bfs",
+                                    title = "Dia Branco",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Geraldo Azevedo")),
+                                    duration = 160,
+                                    thumbnailUrl = "https://img.youtube.com/vi/SgTzZ2U8Bfs/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "a-YgM2_F_90",
+                                    title = "Coisa Linda",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Tiago Iorc")),
+                                    duration = 184,
+                                    thumbnailUrl = "https://img.youtube.com/vi/a-YgM2_F_90/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "Z-L1c0Mv7g4",
+                                    title = "Partilhar",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Rubel & ANAVITÓRIA")),
+                                    duration = 228,
+                                    thumbnailUrl = "https://img.youtube.com/vi/Z-L1c0Mv7g4/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "gX8R-xRswBw",
+                                    title = "Pra Você Guardei O Amor",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Nando Reis & Ana Cañas")),
+                                    duration = 342,
+                                    thumbnailUrl = "https://img.youtube.com/vi/gX8R-xRswBw/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "GxldQ9eX2YQ",
+                                    title = "Until I Found You",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Stephen Sanchez")),
+                                    duration = 180,
+                                    thumbnailUrl = "https://img.youtube.com/vi/GxldQ9eX2YQ/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "mQL7GZ2p8Z8",
+                                    title = "Meu Abrigo",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "Melim")),
+                                    duration = 227,
+                                    thumbnailUrl = "https://img.youtube.com/vi/mQL7GZ2p8Z8/hqdefault.jpg"
+                                ),
+                                MediaMetadata(
+                                    id = "450p7gOxZqI",
+                                    title = "All of Me",
+                                    artists = listOf(MediaMetadata.Artist(id = null, name = "John Legend")),
+                                    duration = 308,
+                                    thumbnailUrl = "https://img.youtube.com/vi/450p7gOxZqI/hqdefault.jpg"
                                 )
                             )
                         }
+
 
                         LazyRow(
                             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),

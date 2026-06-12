@@ -486,12 +486,12 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                     Spacer(modifier = Modifier.height(80.dp))
 
                     Text(
-                        text = "Join our",
+                        text = "Nosso",
                         style = thinHeaderStyle,
                         color = MaterialTheme.colorScheme.onBackground
                     )
                     Text(
-                        text = "Community",
+                        text = "Mundo 💖",
                         fontFamily = GoogleSansFlex,
                         fontWeight = FontWeight.Bold,
                         fontSize = 48.sp,
@@ -502,7 +502,7 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = "ViviMusic is open-source and depends on community support to grow. Your help makes a difference!",
+                        text = "Aqui estão alguns detalhes especiais do nosso amor e das coisas que você mais ama!",
                         style = MaterialTheme.typography.bodyLarge.copy(
                             fontFamily = GoogleSansFlex
                         ),
@@ -517,85 +517,53 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                             .verticalScroll(rememberScrollState())
                     ) {
                         PermissionCard(
-                            icon = rememberVectorPainter(Icons.Rounded.Star),
-                            iconColor = Color(0xFFfff1a8),
-                            iconTint = Color(0xFF8d6e00),
-                            title = "Star on GitHub",
-                            description = "Help us reach more people by starring our repository.",
+                            icon = rememberVectorPainter(Icons.Rounded.Favorite),
+                            iconColor = Color(0xFFFFD1DC),
+                            iconTint = Color(0xFFC71585),
+                            title = "Nosso Início: 16/04/2024",
+                            description = "O dia em que minha vida ficou mais bonita e colorida.",
                             shape = topCardShape,
-                            control = {
-                                Icon(
-                                    imageVector = Icons.Rounded.ChevronRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                uriHandler.safeOpenUri(context, "https://github.com/vivizzz007/vivi-music")
-                            }
+                            control = {},
+                            onClick = {}
                         )
 
                         Spacer(modifier = Modifier.height(2.dp))
 
                         PermissionCard(
-                            icon = painterResource(com.music.vivi.R.drawable.telegram),
-                            iconColor = Color(0xFF67d4ff),
-                            iconTint = Color(0xFF004e5d),
-                            title = "Join Telegram",
-                            description = "Get the latest updates and chat with the community.",
+                            icon = rememberVectorPainter(Icons.Rounded.Star),
+                            iconColor = Color(0xFFFFF9A6),
+                            iconTint = Color(0xFFD4AF37),
+                            title = "Rapunzel & Flynn 👑",
+                            description = "Vejo enfim a luz brilhar, e é como se a névoa se dissipasse...",
                             shape = middleCardShape,
-                            control = {
-                                Icon(
-                                    imageVector = Icons.Rounded.ChevronRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                uriHandler.safeOpenUri(context, "https://t.me/vivimusicapp")
-                            }
+                            control = {},
+                            onClick = {}
                         )
 
                         Spacer(modifier = Modifier.height(2.dp))
 
                         PermissionCard(
-                            icon = painterResource(com.music.vivi.R.drawable.currency_rupee_upi),
-                            iconColor = Color(0xFFffb4ab),
-                            iconTint = Color(0xFF690005),
-                            title = "Support via UPI",
-                            description = "Directly support development via UPI.",
+                            icon = rememberVectorPainter(Icons.Rounded.CheckCircle),
+                            iconColor = Color(0xFFD0F0C0),
+                            iconTint = Color(0xFF228B22),
+                            title = "Snoopy & Woodstock 🐾",
+                            description = "Sempre juntos em cada aventura e em cada dengo diário.",
                             shape = middleCardShape,
-                            control = {
-                                Icon(
-                                    imageVector = Icons.Rounded.ChevronRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                uriHandler.safeOpenUri(context, "upi://pay?pa=vividhpashokan@axl&pn=Vividh P Ashokan")
-                            }
+                            control = {},
+                            onClick = {}
                         )
 
                         Spacer(modifier = Modifier.height(2.dp))
 
                         PermissionCard(
-                            icon = painterResource(com.music.vivi.R.drawable.buymeacoffee),
-                            iconColor = Color(0xFFffb4ab),
-                            iconTint = Color(0xFF690005),
-                            title = "Buy Me a Coffee",
-                            description = "Support the project through Ko-fi.",
+                            icon = rememberVectorPainter(Icons.Rounded.Favorite),
+                            iconColor = Color(0xFFFFC0CB),
+                            iconTint = Color(0xFFDB7093),
+                            title = "Hello Kitty & Mimmy 🎀",
+                            description = "Fofura e carinho em todos os detalhes do nosso amor.",
                             shape = bottomCardShape,
-                            control = {
-                                Icon(
-                                    imageVector = Icons.Rounded.ChevronRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                uriHandler.safeOpenUri(context, "https://ko-fi.com/vividhpashokan")
-                            }
+                            control = {},
+                            onClick = {}
                         )
 
                         Spacer(modifier = Modifier.height(100.dp))
